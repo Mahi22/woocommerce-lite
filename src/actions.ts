@@ -1,5 +1,5 @@
 import { from, empty } from 'rxjs';
-import { filter, map, expand } from 'rxjs/operators';
+import { filter, map, expand, concatMap } from 'rxjs/operators';
 import { createAuth } from './base';
 
 export function createWooCommerceAuth({ props: { credentials, url } }: any) {
@@ -29,7 +29,8 @@ export function fetchOrderItems$({ props: { authFetch, startDate = null, endDate
         orderItems$: fetcher(pageNumber++).pipe(
             expand(orders => {
                 return  orders.length === perPageLimit ? fetcher(pageNumber++) : empty();
-            })
+            }),
+            concatMap(o => o)
         )
     }
 }

@@ -26,7 +26,7 @@ function fetchOrderItems$(_a) {
     return {
         orderItems$: fetcher(pageNumber++).pipe(operators_1.expand(function (orders) {
             return orders.length === perPageLimit ? fetcher(pageNumber++) : rxjs_1.empty();
-        }))
+        }), operators_1.concatMap(function (o) { return o; }))
     };
 }
 exports.fetchOrderItems$ = fetchOrderItems$;

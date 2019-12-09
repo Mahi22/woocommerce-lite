@@ -24,13 +24,17 @@ describe("WOOCOMMERCE SEQUENCES", function() {
   });
 
   describe("Woocommerce Order Fetch", function() {
-    it("should fetch Orders", function(done) {
+    it('should fetch Orders', function(done) {
       FT.run(
         [
           fetchOrders,
-          function resolveMocha(props) {
-            console.log(props);
-            done();
+          function resolveMocha({ props }) {
+            // console.log('---- resolving');
+            // done();
+            props.orderItems$.subscribe({
+              next: console.log,
+              complete: done
+            });
           }
         ],
         {
@@ -42,6 +46,6 @@ describe("WOOCOMMERCE SEQUENCES", function() {
       ).catch(err => {
         console.log(err);
       });
-    });
+    }).timeout(120000);
   });
 });
