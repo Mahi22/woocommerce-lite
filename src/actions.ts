@@ -3,7 +3,7 @@ import { filter, map, expand, concatMap } from 'rxjs/operators';
 import { createAuth } from './base';
 
 export function createWooCommerceAuth({ props: { credentials, url } }: any) {
-    return { authFetch: createAuth(url, credentials) }
+    return { authFetch: createAuth(credentials) }
 }
 
 export function fetchOrderItems$({ props: { authFetch, startDate = null, endDate = null, perPageLimit = 100 } }: any) {

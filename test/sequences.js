@@ -39,7 +39,6 @@ describe("WOOCOMMERCE SEQUENCES", function() {
         ],
         {
           credentials,
-          url: 'https://artwalaz.com',
           startDate: moment().subtract(3, 'days').startOf('day').toISOString(),
           endDate: moment().toISOString()
         }
