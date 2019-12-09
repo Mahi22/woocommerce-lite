@@ -1,0 +1,20 @@
+{
+    "compilerOptions": {
+        "module": "CommonJS",
+        "noImplicitAny": false,
+        "removeComments": true,
+        "preserveConstEnums": true,
+        "target": "es5",
+        "sourceMap": false,
+        "moduleResolution": "Node",
+        "outDir": "nodejs",
+        "lib": ["es5", "es6", "es7", "esnext"]
+      },
+      "files": [
+        "src/nodejs.ts"
+      ],
+      "exclude": [
+        "node_modules",
+        "**/*.spec.ts"
+      ]
+    }

@@ -4,9 +4,10 @@
   "description": "A library to fetch data from woocommerce along with rxjs",
   "main": "nodejs/nodejs.js",
   "scripts": {
-    "clean": "rm -rf nodejs",
+    "clean": "rm -rf browser nodejs google-apps-script",
     "test": "mocha --require mocha-steps",
-    "init-version": "node init-version.js"
+    "init-version": "node init-version.js",
+    "build-nodejs": "tsc -p tsconfig-nodejs.json && npm run init-version -- nodejs"
   },
   "keywords": [
     "woocommerce",
@@ -17,7 +18,18 @@
   "author": "go_online_team",
   "license": "ISC",
   "devDependencies": {
+    "@types/node": "^12.7.2",
+    "browserify": "^16.5.0",
     "mocha": "^6.2.2",
-    "mocha-steps": "^1.3.0"
+    "mocha-steps": "^1.3.0",
+    "moment": "^2.24.0",
+    "typedarray": "^0.0.6",
+    "typescript": "^3.5.3",
+    "uglify-js": "^3.6.0"
+  },
+  "dependencies": {
+    "@woocommerce/woocommerce-rest-api": "^1.0.1",
+    "function-tree": "^3.3.1",
+    "rxjs": "^6.5.3"
   }
 }
