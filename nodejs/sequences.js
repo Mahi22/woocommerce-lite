@@ -6,3 +6,7 @@ exports.fetchWooCommerceOrders = function_tree_1.sequence('Fetch WooCommerce Ord
     actions_1.createWooCommerceAuth,
     actions_1.fetchOrderItems$
 ]);
+exports.fetchWooCommerceProducts = function_tree_1.sequence('Fetch WooCommerce Products', [
+    actions_1.createWooCommerceAuth,
+    actions_1.fetchProducts$
+]);
