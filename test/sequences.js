@@ -53,8 +53,11 @@ describe("WOOCOMMERCE SEQUENCES", function() {
       FT.run(
         [
           fetchWooCommerceProducts,
-          function resolveMocha({ props }) {
-            // console.log('---- resolving');
+          async function resolveMocha({ props }) {
+            console.log('---- resolving');
+            // const products = await props.products;
+            // console.log(products.data);
+            // console.log(products.data.length);
             // done();
             props.products$.subscribe({
               next: console.log,
@@ -63,7 +66,8 @@ describe("WOOCOMMERCE SEQUENCES", function() {
           }
         ],
         {
-          credentials
+          credentials,
+          perPageLimit: 100
         }
       ).catch(err => {
         console.log(err);

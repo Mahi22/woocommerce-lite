@@ -1,5 +1,5 @@
 import { from, empty } from 'rxjs';
-import { filter, map, expand, concatMap } from 'rxjs/operators';
+import { filter, map, expand, concatMap, tap } from 'rxjs/operators';
 import { createAuth } from './base';
 
 export function createWooCommerceAuth({ props: { credentials } }: any) {
@@ -9,9 +9,9 @@ export function createWooCommerceAuth({ props: { credentials } }: any) {
 export function fetchProducts$({ props: { authFetch, perPageLimit = 100 }}) {
     var pageNumber = 1;
 
-    function fetcher(page = 1) {
+    function fetcher(page = 0) {
         return  from(authFetch.get('products', {
-            page,
+            offset: page * perPageLimit,
             per_page: perPageLimit,
         })).pipe(
             filter((response: { status: number}) => response.status === 200),
@@ -20,9 +20,10 @@ export function fetchProducts$({ props: { authFetch, perPageLimit = 100 }}) {
     }
 
     return {
-        products$: fetcher(pageNumber++).pipe(
-            expand(orders => {
-                return  orders.length === perPageLimit ? fetcher(pageNumber++) : empty();
+        products$: fetcher().pipe(
+            // tap(val => console.log(pageNumber, val.length)),
+            expand(products => {
+                return  products.length === perPageLimit ? fetcher(pageNumber++) : empty();
             }), // []
             concatMap(o => o)
         )
