@@ -1,6 +1,6 @@
 {
-  "name": "woocomerce-lite",
-  "version": "0.0.1",
+  "name": "@easeapp/woocomerce-lite",
+  "version": "0.1.0",
   "description": "A library to fetch data from woocommerce along with rxjs",
   "main": "nodejs/nodejs.js",
   "scripts": {
