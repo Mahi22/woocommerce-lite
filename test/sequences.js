@@ -2,7 +2,7 @@ var assert = require("assert");
 var FunctionTree = require("function-tree").FunctionTree;
 var Devtools = require("function-tree/devtools").Devtools;
 var moment = require('moment');
-var { fetchOrders } = require('../nodejs/nodejs');
+var { fetchWooCommerceOrders } = require('../nodejs/nodejs');
 var  credentials = require('../credentials');
 
 const devtools = new Devtools({
@@ -27,7 +27,7 @@ describe("WOOCOMMERCE SEQUENCES", function() {
     it('should fetch Orders', function(done) {
       FT.run(
         [
-          fetchOrders,
+          fetchWooCommerceOrders,
           function resolveMocha({ props }) {
             // console.log('---- resolving');
             // done();

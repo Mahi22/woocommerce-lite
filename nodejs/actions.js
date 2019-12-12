@@ -4,7 +4,7 @@ var rxjs_1 = require("rxjs");
 var operators_1 = require("rxjs/operators");
 var base_1 = require("./base");
 function createWooCommerceAuth(_a) {
-    var _b = _a.props, credentials = _b.credentials, url = _b.url;
+    var credentials = _a.props.credentials;
     return { authFetch: base_1.createAuth(credentials) };
 }
 exports.createWooCommerceAuth = createWooCommerceAuth;

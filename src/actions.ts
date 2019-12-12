@@ -2,7 +2,7 @@ import { from, empty } from 'rxjs';
 import { filter, map, expand, concatMap } from 'rxjs/operators';
 import { createAuth } from './base';
 
-export function createWooCommerceAuth({ props: { credentials, url } }: any) {
+export function createWooCommerceAuth({ props: { credentials } }: any) {
     return { authFetch: createAuth(credentials) }
 }
 
