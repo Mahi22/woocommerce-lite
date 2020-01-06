@@ -10,3 +10,7 @@ exports.fetchWooCommerceProducts = function_tree_1.sequence('Fetch WooCommerce P
     actions_1.createWooCommerceAuth,
     actions_1.fetchProducts$
 ]);
+exports.validateWooCommerceCredentials = function_tree_1.sequence('Validate WooCommerce Credentials', [
+    actions_1.createWooCommerceAuth,
+    actions_1.validateAuth
+]);

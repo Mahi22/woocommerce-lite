@@ -59,3 +59,9 @@ export function fetchOrderItems$({ props: { authFetch, startDate = null, endDate
         )
     }
 } 
+
+export async function validateAuth({ props: { authFetch } }: any) {
+    const response = await authFetch.get('');
+    console.log('Getting Response');
+    return { valid: response.status === 200 ? true : false };
+}
